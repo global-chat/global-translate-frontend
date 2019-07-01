@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Sockette from "sockette";
+import Navigation from "./nav";
 let ws = null;
 
 const ChatWindow = props => {
@@ -32,8 +33,11 @@ const ChatWindow = props => {
 
 
   return (
+    <>
+    <Navigation></Navigation>
     <div>
     </div>
+    </>
   );
 };
 

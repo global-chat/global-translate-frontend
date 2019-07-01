@@ -51,6 +51,31 @@ export default class Register extends Component {
           <label htmlfor="photo"><b>Profile Pic</b></label>
           <input type="file" name="myPic"/>
 
+          <label htmlFor="langPref"><b>Language Preference</b></label>
+          <select>
+            <option value="arabic">Arabic</option>
+            <option value="chineseT">Chinese `(Traditional)`</option>
+            <option value="chineseS">Chinese `(Simplified)`</option>
+            <option value="czech">Czech</option>
+            <option value="danish">Danish</option>
+            <option value="dutch">Dutch</option>
+            <option value="english">English</option>
+            <option value="finnish">Finnish</option>
+            <option value="french">French</option>
+            <option value="german">German</option>
+            <option value="hebrew">Hebrew</option>
+            <option value="indonesian">Indonesian</option>
+            <option value="italian">Italian</option>
+            <option value="japanese">Japanese</option>
+            <option value="korean">Korean</option>
+            <option value="polish">Polish</option>
+            <option value="portuguese">Portuguese</option>
+            <option value="russian">Russian</option>
+            <option value="spanish">Spanish</option>
+            <option value="swedish">Swedish</option>
+            <option value="turkish">Turkish</option>
+          </select>
+
           <button className="registerbtn">Register</button>
         </div>
       </form>
