@@ -1,7 +1,62 @@
+@import url('https://fonts.googleapis.com/css?family=Liu+Jian+Mao+Cao&display=swap');
+
 * {
   box-sizing: border-box;
+
 }
 
 body{
   text-align: center;
+}
+// ------------------------Nav bar CSS-------------------------
+nav{
+  width: 980px;
+  height: 45px;
+  background-color: rgb(6, 4, 136);
+  text-align: center;
+  margin: auto;
+  display: inline-block;
+
+}
+
+nav img{
+  margin-right: auto;
+  display: inline;
+  margin-top: 5px;
+  
+}
+nav p{
+  margin-right: 400px;
+  display: inline;
+  color: gray;
+  font-size: 40px;
+  font-family: 'Liu Jian Mao Cao', cursive;
+ 
+}
+nav ul{
+  text-align: right;
+  display: inline;
+  margin-bottom: 5px;
+
+}
+nav li {
+  margin-right: 20px;
+  display: inline;
+  color: gray;
+  
+  
+}
+//---------------------------END Nav bar CSS-----------------------
+//---------------------------Register page CSS---------------------
+.register-form{
+  width: 980px;
+  margin: auto;
+  margin-top: 20px;
+  font-size: 20px;
+  background-color: blanchedalmond;
+}
+.register-form p{
+  margin-bottom: 10px;
+  margin-left: 0;
+
 }

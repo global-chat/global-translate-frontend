@@ -28,11 +28,12 @@ class Register extends React.Component{
     return (
       <>
       <Nav></Nav>
-        <h2>Register</h2>
+        <div className="register-form">
+        <h2 >Register</h2>
         <form>
           <p>First Name <input type="text"/></p>
           <p>Last Name <input type="text"/></p>
-          <p>email <input type="text"/></p>
+          <p>Email <input type="text"/></p>
           <p>Password <input type="text"/></p>
           <p>Confirm Password <input type="text"/></p>
           <p>Photo Upload <input type="file" name="myFile"/></p>
@@ -44,6 +45,7 @@ class Register extends React.Component{
             <button type="submit">Submit</button>
 
         </form>
+        </div>
       </>
     );
   }
