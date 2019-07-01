@@ -8,7 +8,7 @@ class Register extends React.Component{
       this.state = {
         firstName : "",
         lastName : "",
-        username : "",
+        email : "",
         password : "",
         confirmPassword : "",
         photo : "",
@@ -32,7 +32,7 @@ class Register extends React.Component{
         <form>
           <p>First Name <input type="text"/></p>
           <p>Last Name <input type="text"/></p>
-          <p>Username <input type="text"/></p>
+          <p>email <input type="text"/></p>
           <p>Password <input type="text"/></p>
           <p>Confirm Password <input type="text"/></p>
           <p>Photo Upload <input type="file" name="myFile"/></p>

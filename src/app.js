@@ -6,7 +6,8 @@ import ChatWindow from './chat';
 import Register from './register';
 import Login from './login';
 import AboutUs from './aboutus';
-
+import Nav from './nav';
+import './scss/core.scss';
 
 function App() {
   return (
