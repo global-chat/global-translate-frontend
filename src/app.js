@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Routes from './routeManager';
+import Routes from './routes/routeManager';
 import { Auth } from "aws-amplify";
 import { withRouter } from "react-router-dom";
 
@@ -23,7 +23,7 @@ class App extends Component {
       this.setState({userName: user["accessToken"].payload.username, userToken: user["accessToken"].jwtToken})
     }
     catch(e) {
-      if (e === 'No current user') {
+      if (e !== 'No current user') {
         alert(e);
       }
     }
