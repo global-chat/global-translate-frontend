@@ -1,5 +1,5 @@
 import React from 'react';
-import Nav from './nav';
+import Nav from '../nav';
 import Charles from './images/charles.png';
 import Xia from './images/xia.png';
 import Anthony from './images/anthony.png';
