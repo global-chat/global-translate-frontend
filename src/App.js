@@ -1,8 +1,10 @@
 import React from 'react';
+import ChatWindow from './chat';
+
 function App() {
   return (
     <div className="App">
-      Yo!
+      <ChatWindow/>
     </div>
   );
 }
