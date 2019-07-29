@@ -11,9 +11,8 @@ export const Layout = (props) => (
       </Col>
     </Row>
     <Row>
-      {/* { props.children } */}
       <Col>
-        <h2 class="bg-success">Content</h2>
+        { props.children }
       </Col>
     </Row>
     <Row>
