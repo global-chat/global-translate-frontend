@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import Layout from './components/layout'
 
 // export class Home extends Component {
 //   render() {
@@ -14,13 +14,9 @@ import { Link } from 'react-router-dom';
 // export default Home;
 
 export const Home = () => (
-  <Container>
-    <Row>
-      <Col xs={12} md={8}>
-        <h1>Home Page</h1>
-      </Col>
-    </Row>
-  </Container>
+  <Layout>
+    <h1>Home Page</h1>
+  </Layout>
 )
 
 export default Home;
