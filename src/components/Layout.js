@@ -5,7 +5,22 @@ import Col from 'react-bootstrap/Col'
 
 export const Layout = (props) => (
   <Container>
-    { props.children }
+    <Row>
+      <Col>
+        <h1 class="bg-info">Navbar</h1>
+      </Col>
+    </Row>
+    <Row>
+      {/* { props.children } */}
+      <Col>
+        <h2 class="bg-success">Content</h2>
+      </Col>
+    </Row>
+    <Row>
+      <Col>
+        <h3 class="bg-danger">Footer</h3>
+      </Col>
+    </Row>
   </Container>
 )
 
