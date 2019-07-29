@@ -1,27 +1,14 @@
 import React from 'react';
 import Layout from './components/layout'
+import Jumbotron from './components/jumbotron'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import Jumbotron from 'react-bootstrap/Jumbotron'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 
 export const Home = () => (
   <Layout>
-    <Row>
-      <Col>
-        <Jumbotron>
-          <h1>Hello, world!</h1>
-          <p>
-            This is a simple hero unit, a simple jumbotron-style component for calling
-            extra attention to featured content or information.
-          </p>
-          <p>
-            <Button variant="primary">Learn more</Button>
-          </p>
-        </Jumbotron>
-      </Col>
-    </Row>
+    <Jumbotron />
     <Row>
       <Col>
         <Card /*style={{ width: '18rem' }}*/>
