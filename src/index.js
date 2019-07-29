@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './app';
+import App from './component/app';
 import * as serviceWorker from './serviceWorker';
+import Amplify from 'aws-amplify';
+
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

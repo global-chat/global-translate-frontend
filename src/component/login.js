@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
 
-export class Register extends Component {
+export default class Login extends Component {
   render() {
     return (
       <Fragment>

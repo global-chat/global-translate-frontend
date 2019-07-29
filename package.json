@@ -3,10 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "amazon-cognito-identity-js": "^3.0.14",
+    "aws-amplify": "^1.1.32",
+    "dotenv": "^8.0.0",
     "react": "^16.8.6",
     "react-chat-window": "^1.2.1",
     "react-dom": "^16.8.6",
     "react-router": "^5.0.1",
+    "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
     "sockette": "^2.0.6"
   },
