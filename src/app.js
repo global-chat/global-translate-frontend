@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ChatWindow from './chat';
+import Home from './home';
 // import Home from './home';
 // import Register from './register';
 // import Login from './login';
@@ -26,12 +27,12 @@ class App extends Component {
         <Router>
           <Switch>
             <Route exact path="/" component={ Home } />
-            <Route path="/about" component={ About } />
-            <Route path="/login" component={ Login } />
-            <Route path="/register" component={ Register } />
-            <Route path="/dashboard" component={ Dashboard } />
-            <Route path="/chatroom" component={ Chatroom } />
-            <Route exact component={ BadRoute } />
+            {/* <Route path="/about" component={ about } />
+            <Route path="/login" component={ login } />
+            <Route path="/register" component={ register } />
+            <Route path="/dashboard" component={ dashboard } />
+            <Route path="/chatroom" component={ chatroom } />
+            <Route exact component={ BadRoute } /> */}
           </Switch>
         </Router>
       </React.Fragment>
