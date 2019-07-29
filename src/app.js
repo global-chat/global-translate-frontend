@@ -1,6 +1,5 @@
-import React, { Fragment } from 'react';
 import React, { Component } from 'react';
-import { Route } from 'react-router';
+import { BrowserRouter as Router, Route, Switch } from 'react-router';
 import ChatWindow from './chat';
 // import Home from './home';
 // import Register from './register';
@@ -21,7 +20,23 @@ import ChatWindow from './chat';
 // }
 
 class App extends Component {
-
+  render() {
+    return (
+      <React.Fragment>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={ Home } />
+            <Route path="/about" component={ About } />
+            <Route path="/login" component={ Login } />
+            <Route path="/register" component={ Register } />
+            <Route path="/dashboard" component={ Dashboard } />
+            <Route path="/chatroom" component={ Chatroom } />
+            <Route exact component={ BadRoute } />
+          </Switch>
+        </Router>
+      </React.Fragment>
+    );
+  }
 }
 
 export default App;
