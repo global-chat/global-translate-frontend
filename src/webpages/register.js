@@ -39,7 +39,7 @@ export default class Register extends Component {
           <label htmlfor="lastName"><b>Last Name</b></label>
           <input type="text" placeholder="Last Name" name="lastName" required />
 
-          <label htmlFor="username"><b>Email</b></label>
+          <label htmlFor="username"><b>Username</b></label>
           <input type="text" placeholder="Enter Email" name="username" required />
 
           <label htmlFor="password"><b>Password</b></label>
