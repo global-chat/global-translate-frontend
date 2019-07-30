@@ -33,6 +33,7 @@ const ChatWindow = props => {
 
   return (
     <div>
+      <h1>THis is a great chat room</h1>
     </div>
   );
 };

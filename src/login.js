@@ -4,12 +4,6 @@ import Nav from './nav';
 
 class Login extends React.Component{
  
-
-
-
-
-
-
   render(){
     return(
       <>
