@@ -11,7 +11,7 @@ import Login from './component/login';
 export default ({ childProps }) =>
   <Switch>
     <RoutePath path="/" exact component={Home} props={childProps} />
-    <UnauthenticatedRoute path='/register' exact component={Register} props={childProps} />
+    <RoutePath path='/register' exact component={Register} props={childProps} />
     <UnauthenticatedRoute path='/login' exact component={Login} props={childProps} />
     {/* <AuthenticatedRoute path='/chat' exact component={ChatWindow} props={childProps}/> */}
     { /* Finally, catch all unmatched routes */}

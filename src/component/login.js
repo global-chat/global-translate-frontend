@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import 'crypto-js/lib-typedarrays';
-import Amplify, { Auth } from "aws-amplify";
+import { Auth } from "aws-amplify";
 
 
 
@@ -11,8 +11,11 @@ export default class Login extends Component {
     const username = event.target.username.value;
     const password = event.target.password.value;
     try {
-      await Auth.signIn(username, password);
-      alert("Logged in");
+      const user = await Auth.signIn(username, password);
+      this.props.setUserName(user['username']);
+      this.props.setUserToken(user['signInUserSession'].accessToken.jwtToken);
+      this.props.authenticateUser(true);
+      this.props.history.push("/")
     } catch (e) {
       alert(e.message);
     }

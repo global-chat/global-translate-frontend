@@ -3,47 +3,68 @@ import Routes from './routeManager';
 import { Auth } from "aws-amplify";
 import { withRouter } from "react-router-dom";
 
-
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       isAuthenticated: false,
-      isAuthenticating: true
+      isAuthenticating: true,
+      userName: null,
+      userToken: null,
     };
   }
 
   async componentDidMount() {
     try {
-      await Auth.currentSession();
-      this.userHasAuthenticated(true);
+      const user = await Auth.currentSession();
+      this.setState({user:user});
+      this.authenticateUser(true);
+      this.setState({userName: user["accessToken"].payload.username, userToken: user["accessToken"].jwtToken})
     }
     catch(e) {
-      if (e !== 'No current user') {
+      if (e === 'No current user') {
         alert(e);
       }
     }
-
     this.setState({ isAuthenticating: false });
   }
 
-  userHasAuthenticated = authenticated => {
+  authenticateUser = authenticated => {
     this.setState({ isAuthenticated: authenticated });
   }
 
-  handleLogout = async event => {
+  setUserName = user => {
+    this.setState({ userName: user });
+  }
+
+  setUserToken = userToken => {
+    this.setState({ userToken: userToken });
+  }
+
+  onLogout = async event => {
+    try {
     await Auth.signOut();
 
-    this.userHasAuthenticated(false);
+    this.authenticateUser(false);
+    this.setUserName(null);
+    this.setUserToken(null);
 
     this.props.history.push("/login");
+    } catch(e) {
+      alert(e);
+    }
   }
 
   render() {
     const authentication = {
       isAuthenticated: this.state.isAuthenticated,
-      userHasAuthenticated: this.userHasAuthenticated
+      authenticateUser: this.authenticateUser,
+      logoutUser: this.onLogout,
+      userName: this.state.userName,
+      userToken: this.state.userToken,
+      setUserName: this.setUserName,
+      setUserToken: this.setUserToken
     };
 
     return (
