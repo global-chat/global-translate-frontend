@@ -1,4 +1,5 @@
 import React from 'react';
+//import Footer from './components/footer.js'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
@@ -17,7 +18,7 @@ export const Layout = (props) => (
     </Row>
     <Row>
       <Col>
-        <h3 class="bg-danger">Footer</h3>
+        {/* <Footer /> */}
       </Col>
     </Row>
   </Container>
