@@ -1,39 +1,47 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
-var AmazonCognitoIdentity = require('amazon-cognito-identity-js');
 
-var poolData = {
-  UserPoolId : process.env.REACT_APP_USER_POOL,
+const AmazonCognitoIdentity = require('amazon-cognito-identity-js');
+
+
+let globalUsername;
+let token;
+
+const poolData = {
+  UserPoolId: process.env.REACT_APP_USER_POOL,
   ClientId: process.env.REACT_APP_CLIENT_ID
 }
-var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
-var attributeList = [];
+const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
 
 export default class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cognitoUser: null
+      userName: null,
+      userToken: null,
     }
+
   }
-  
+
   onRegister = (event) => {
-    var username = event.target.email.value;
-    var password = event.target.psw.value;
+    const username = event.target.email.value;
+    const password = event.target.psw.value;
     event.preventDefault();
 
-    userPool.signUp(username, password, attributeList, null, function(err, result){
+    userPool.signUp(username, password, [], null, function (err, result) {
       if (err) {
-          alert(err.message);
+        alert(err.message);
+        return;
       }
-      this.setState({cognitoUser : result.user});
-      console.log('user name is ' + this.state.cognitoUser.getUsername());
-  });
 
+      globalUsername = result.user.getUsername();
+      token = result.userSub;
+    })
   }
+
 
   render() {
     return (
