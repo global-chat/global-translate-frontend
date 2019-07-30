@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import 'crypto-js/lib-typedarrays';
 import { Auth } from "aws-amplify";
+import Nav from '../nav';
 
 
 
@@ -24,6 +25,7 @@ export default class Login extends Component {
   render() {
     return (
       <Fragment>
+        <Nav></Nav>
         <form onSubmit={event => this.onLogin(event)}>
           <div className="container">
             <h1>Login</h1>

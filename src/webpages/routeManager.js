@@ -7,12 +7,14 @@ import UnauthenticatedRoute from './component/unauthenticatedRoute';
 import ChatWindow from './component/chat';
 import Register from './component/register';
 import Login from './component/login';
+import AboutUs from './component/aboutus';
 
 export default ({ childProps }) =>
   <Switch>
     <RoutePath path="/" exact component={Home} props={childProps} />
     <RoutePath path='/register' exact component={Register} props={childProps} />
     <UnauthenticatedRoute path='/login' exact component={Login} props={childProps} />
+    <RoutePath path="/aboutus" exact component={AboutUs}/>
     {/* <AuthenticatedRoute path='/chat' exact component={ChatWindow} props={childProps}/> */}
     { /* Finally, catch all unmatched routes */}
     {/* <Route component={NotFound} /> */}
