@@ -5,6 +5,7 @@
   "dependencies": {
     "amazon-cognito-identity-js": "^3.0.14",
     "aws-amplify": "^1.1.32",
+    "crypto-js": "^3.1.9-1",
     "dotenv": "^8.0.0",
     "react": "^16.8.6",
     "react-chat-window": "^1.2.1",

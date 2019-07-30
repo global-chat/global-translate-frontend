@@ -1,7 +1,7 @@
-import React, { Fragment, Component } from 'react';
+import React, { Component } from 'react';
 import Routes from './routeManager';
 import { Auth } from "aws-amplify";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 
 class App extends Component {
@@ -41,7 +41,7 @@ class App extends Component {
   }
 
   render() {
-    const childProps = {
+    const authentication = {
       isAuthenticated: this.state.isAuthenticated,
       userHasAuthenticated: this.userHasAuthenticated
     };
@@ -49,7 +49,7 @@ class App extends Component {
     return (
       !this.state.isAuthenticating &&
       <div className="App container">
-        <Routes childProps={childProps} />
+        <Routes childProps={authentication} />
       </div>
     );
   }
