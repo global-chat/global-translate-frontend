@@ -1,31 +1,79 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import ChatWindow from './chat';
-import Home from './home';
-import Register from './register';
-import Login from './login';
-import AboutUs from './aboutus';
-import Nav from './nav';
-// import './scss/core.scss';
+import Routes from './routeManager';
+import { Auth } from "aws-amplify";
+import { withRouter } from "react-router-dom";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isAuthenticated: false,
+      isAuthenticating: true,
+      userName: null,
+      userToken: null,
+    };
+  }
+
+  async componentDidMount() {
+    try {
+      const user = await Auth.currentSession();
+      this.setState({user:user});
+      this.authenticateUser(true);
+      this.setState({userName: user["accessToken"].payload.username, userToken: user["accessToken"].jwtToken})
+    }
+    catch(e) {
+      if (e === 'No current user') {
+        alert(e);
+      }
+    }
+    this.setState({ isAuthenticating: false });
+  }
+
+  authenticateUser = authenticated => {
+    this.setState({ isAuthenticated: authenticated });
+  }
+
+  setUserName = user => {
+    this.setState({ userName: user });
+  }
+
+  setUserToken = userToken => {
+    this.setState({ userToken: userToken });
+  }
+
+  onLogout = async event => {
+    try {
+    await Auth.signOut();
+
+    this.authenticateUser(false);
+    this.setUserName(null);
+    this.setUserToken(null);
+
+    this.props.history.push("/login");
+    } catch(e) {
+      alert(e);
+    }
+  }
+
   render() {
+    const authentication = {
+      isAuthenticated: this.state.isAuthenticated,
+      authenticateUser: this.authenticateUser,
+      logoutUser: this.onLogout,
+      userName: this.state.userName,
+      userToken: this.state.userToken,
+      setUserName: this.setUserName,
+      setUserToken: this.setUserToken
+    };
+
     return (
-      <React.Fragment>
-        <Router>
-          <Switch>
-            <Route exact path="/" component={ Home } />
-            {/* <Route path="/about" component={ about } /> */}
-            <Route path='/register' component={Register} />
-            <Route path='/login' component={Login} />
-            {/* <Route path="/dashboard" component={ dashboard } />
-            <Route path="/chatroom" component={ chatroom } />
-            <Route exact component={ BadRoute } /> */}
-          </Switch>
-        </Router>
-      </React.Fragment>
+      !this.state.isAuthenticating &&
+      <div className="App container">
+        <Routes childProps={authentication} />
+      </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App);
