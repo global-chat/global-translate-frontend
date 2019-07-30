@@ -1,13 +1,13 @@
 import React from "react";
 import { Router, Switch } from "react-router-dom";
-import RoutePath from "./component/route-path";
-import Home from "./component/home";
+import RoutePath from "./webpages/route-path";
+import Home from "./webpages/home";
 // import AuthenticatedRoute from "./component/AuthenticatedRoute";
-import UnauthenticatedRoute from './component/unauthenticatedRoute';
-import ChatWindow from './component/chat';
-import Register from './component/register';
-import Login from './component/login';
-import AboutUs from './component/aboutus';
+import UnauthenticatedRoute from './webpages/unauthenticatedRoute';
+import ChatWindow from './webpages/chat';
+import Register from './webpages/register';
+import Login from './webpages/login';
+import AboutUs from './webpages/aboutus';
 
 export default ({ childProps }) =>
   <Switch>

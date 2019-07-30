@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
-import config from './config';
-import App from './component/app';
-import * as serviceWorker from './serviceWorker';
+import config from './webpages/config';
+import App from './app';
+import * as serviceWorker from './webpages/serviceWorker';
 import Amplify from 'aws-amplify';
 
 Amplify.configure({
