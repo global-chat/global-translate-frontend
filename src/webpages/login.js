@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import 'crypto-js/lib-typedarrays';
 import { Auth } from "aws-amplify";
-import Nav from '../nav';
+import Nav from './nav';
 
 
 
