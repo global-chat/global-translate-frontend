@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import 'crypto-js/lib-typedarrays';
 import { Auth } from "aws-amplify";
+import Navigation from './nav';
 
 export default class Register extends Component {
 
@@ -25,6 +26,8 @@ export default class Register extends Component {
   }
   render() {
     return (
+      <>
+      <Navigation></Navigation>
       <form onSubmit={event => this.onRegister(event)}>
         <div className="container">
           <h1>Register</h1>
@@ -51,6 +54,7 @@ export default class Register extends Component {
           <button className="registerbtn">Register</button>
         </div>
       </form>
+      </>
     );
   }
 }
