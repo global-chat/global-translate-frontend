@@ -31,7 +31,7 @@ export default class Login extends Component {
             <h1>Login</h1>
             <br />
 
-            <label htmlFor="user-name"><b>Email</b></label>
+            <label htmlFor="user-name"><b>Username</b></label>
             <input type="text" placeholder="Enter Username" name="username" required />
 
             <label htmlFor="password"><b>Password</b></label>
