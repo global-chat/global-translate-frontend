@@ -23,7 +23,7 @@ class App extends Component {
       this.setState({userName: user["accessToken"].payload.username, userToken: user["accessToken"].jwtToken})
     }
     catch(e) {
-      if (e === 'No current user') {
+      if (e !== 'No current user') {
         alert(e);
       }
     }
