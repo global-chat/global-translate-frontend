@@ -1,7 +1,8 @@
 import React from "react";
 import { Router, Switch } from "react-router-dom";
 import RoutePath from "./webpages/route-path";
-import Home from "./webpages/home";
+// import Home from "./webpages/home";
+import Home from "./home";
 // import AuthenticatedRoute from "./component/AuthenticatedRoute";
 import UnauthenticatedRoute from './webpages/unauthenticatedRoute';
 import ChatWindow from './webpages/chat';
