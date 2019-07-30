@@ -61,7 +61,6 @@ export default class ChatWindow extends Component {
       <ul>
       {messageList}
       </ul>
-
       </Fragment>
     );
   }
