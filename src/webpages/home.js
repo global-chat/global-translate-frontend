@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Navigation from './nav';
-import Layout from '../components/layout';
+import Layout from '../components/Layout';
 import Jumbotron from '../components/jumbotron';
 import Card from '../components/card';
 import Container from 'react-bootstrap/Container';

@@ -69,7 +69,7 @@ class App extends Component {
 
     return (
       !this.state.isAuthenticating &&
-      <div className="App container">
+      <div className="App-container">
         <Routes childProps={authentication} />
       </div>
     );
