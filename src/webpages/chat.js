@@ -16,11 +16,14 @@ export default class ChatWindow extends Component {
 
   componentDidMount() {
     ws = new Sockette(
-      "wss://6u0sg2u4x6.execute-api.us-west-2.amazonaws.com/Test",
+      `wss://6u0sg2u4x6.execute-api.us-west-2.amazonaws.com/Test?username=${this.props.userName}`,
       {
         timeout: 5e3,
         maxAttempts: 1,
-        onopen: e => console.log("connected:", e),
+        onopen: e => {
+          console.log("connected:", e);
+          this.sendInitial();
+        },
         onmessage: e => this.onMessageReceived(e),
         onreconnect: e => console.log("Reconnecting...", e),
         onmaximum: e => console.log("Stop Attempting!", e),
@@ -34,6 +37,13 @@ export default class ChatWindow extends Component {
     };
   }
 
+  sendInitial = () => {
+    ws.json({
+      message: "sendMessage",
+      data: "Initial"
+    });
+  }
+
   onMessageReceived = ({ data }) => {
     let message = JSON.parse(data);
     this.setState({ storedMessage: [...this.state.storedMessage, message] })
@@ -43,7 +53,7 @@ export default class ChatWindow extends Component {
     event.preventDefault();
     ws.json({
       message: "sendMessage",
-      data: { "text": event.target.chat.value, "userName": this.props.userName, "language": this.state.language }
+      data: { "chat": event.target.chat.value, "userName": this.props.userName, "language": this.state.language }
     });
   }
 
@@ -54,14 +64,12 @@ export default class ChatWindow extends Component {
         mode: 'cors',
         method: 'POST',
         headers: {
-          'Statue': '200',
-          'Access-Control-Allow-Origin': "",
-          "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
-          "Access-Control-Allow-Headers": "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
+          'Status': '200',
+          'Access-Control-Allow-Origin': true,
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({'source': this.state.storedMessage[i].language, 'target': this.state.language, 'text': this.state.storedMessage[i].text})
+        body: JSON.stringify({'source': this.state.storedMessage[i].language, 'target': this.state.language, 'text': this.state.storedMessage[i].chat})
       })
       .then(data => {
         console.log(data);
@@ -83,7 +91,7 @@ export default class ChatWindow extends Component {
     let messageList = [];
     for (let i = 0; i < this.state.storedMessage.length; i++) {
       messageList.push(
-        <li key={i}>{this.state.storedMessage[i].userName} says: {this.state.storedMessage[i].text}.</li>)
+        <li key={i}>{this.state.storedMessage[i].userName} says: {this.state.storedMessage[i].chat}.</li>)
     }
     return (
       <Fragment>
