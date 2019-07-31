@@ -3,25 +3,35 @@ import { Smile } from 'react-feather';
 import { Picker } from 'emoji-mart'
 import Sockette from "sockette";
 import './emoji-mart.css'
+// import 'emoji-mart/css/emoji-mart.css'
+import 'cors';
+
+require('cors');
+
 let ws = null;
+
+
 
 export default class ChatWindow extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      storedMessage: [],
+      language: "en",
       showEmojiPicker: false,
-      storedMessage: []
     };
   }
  
   componentDidMount() {
     ws = new Sockette(
-      "wss://6u0sg2u4x6.execute-api.us-west-2.amazonaws.com/Test",
+      `wss://6u0sg2u4x6.execute-api.us-west-2.amazonaws.com/Test?username=${this.props.userName}`,
       {
         timeout: 5e3,
         maxAttempts: 1,
-        onopen: e => console.log("connected:", e),
+        onopen: e => {
+          console.log("connected:", e);
+        },
         onmessage: e => this.onMessageReceived(e),
         onreconnect: e => console.log("Reconnecting...", e),
         onmaximum: e => console.log("Stop Attempting!", e),
@@ -35,6 +45,13 @@ export default class ChatWindow extends Component {
     };
   }
 
+  sendInitial = () => {
+    ws.json({
+      message: "sendMessage",
+      data: "Initial"
+    });
+  }
+
   onMessageReceived = ({ data }) => {
     let message = JSON.parse(data);
     this.setState({ storedMessage: [...this.state.storedMessage, message] });
@@ -44,7 +61,7 @@ export default class ChatWindow extends Component {
     event.preventDefault();
     ws.json({
       message: "sendMessage",
-      data: {"chat":event.target.chat.value, "userName": this.props.userName}
+      data: { "chat": event.target.chat.value, "userName": this.props.userName, "language": this.state.language }
     });
   }
   addEmoji = (e) => {
@@ -66,6 +83,25 @@ export default class ChatWindow extends Component {
 
   };
 
+  selectLanguage = async event => {
+    let translatedMessage = []
+    const language =  event.target.value;
+    for (let i = 0; i < this.state.storedMessage.length; i++) {
+      const result = await fetch(`https://rop898gbik.execute-api.us-west-2.amazonaws.com/initial`, {
+        mode: 'cors',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({'source': this.state.storedMessage[i].language, 'target': language, 'text': this.state.storedMessage[i].chat})
+      });
+      const content = await result.json();
+      console.log(content);
+
+    }
+  }
+
   render() {
     const {
       // [..]
@@ -73,12 +109,20 @@ export default class ChatWindow extends Component {
     } = this.state;
     
     let messageList = [];
-    for(let i = 0; i < this.state.storedMessage.length; i++) {
+    for (let i = 0; i < this.state.storedMessage.length; i++) {
       messageList.push(
-      <li key={i}>{this.state.storedMessage[i].userName} says: {this.state.storedMessage[i].chat}.</li>)
+        <li key={i}>{this.state.storedMessage[i].userName} says: {this.state.storedMessage[i].chat}.</li>)
     }
     return (
       <Fragment>
+        <form onChange={event => this.selectLanguage(event)}>
+          <select>
+            <option value="en">English</option>
+            <option value="fr">French</option>
+            <option value="de">German</option>
+            <option value="es">Spanish</option>
+          </select>
+        </form>
       <form onSubmit={event => this.onSendMessage(event)} >
         <div className="container">
           <input type="text" placeholder="Enter Text" name="chat" required />
