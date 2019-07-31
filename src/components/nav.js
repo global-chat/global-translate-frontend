@@ -6,7 +6,7 @@ export default class Navigation extends Component {
     e.preventDefault();
     console.log('The link was clicked.');
     this.props.props.history.push("/chat")
-
+   
   };
   render() {
     return (
