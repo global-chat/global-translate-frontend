@@ -3,14 +3,8 @@ import { Smile } from 'react-feather';
 import { Picker } from 'emoji-mart'
 import Sockette from "sockette";
 import 'emoji-mart/css/emoji-mart.css'
-import 'cors';
-
-require('cors');
 
 let ws = null;
-
-
-
 export default class ChatWindow extends Component {
   constructor(props) {
     super(props);
@@ -53,16 +47,30 @@ export default class ChatWindow extends Component {
 
   onMessageReceived = ({ data }) => {
     let message = JSON.parse(data);
+    console.log(message);
     this.setState({ storedMessage: [...this.state.storedMessage, message] });
   };
  
-  onSendMessage = event => {
+  onSendMessage =async event => {
     event.preventDefault();
+
+    const result = await fetch(`https://rop898gbik.execute-api.us-west-2.amazonaws.com/initial`, {
+        mode: 'cors',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({'source': "en", 'target': this.state.language, 'text': event.target.chat.value})
+      });
+      const content = await result.json();
+      const msg=content.body.TranslatedText;
     ws.json({
       message: "sendMessage",
-      data: { "chat": event.target.chat.value, "userName": this.props.userName, "language": this.state.language }
+      data: { "chat": msg, "userName": this.props.userName, "language": this.state.language }
     });
-  }
+  };
+
   addEmoji = (e) => {
     console.log(e.native)
     let message= e.native;
@@ -83,8 +91,11 @@ export default class ChatWindow extends Component {
   };
 
   selectLanguage = async event => {
-    let translatedMessage = []
+    let newArr=[];
     const language =  event.target.value;
+    this.setState({
+      "language":language
+    });
     for (let i = 0; i < this.state.storedMessage.length; i++) {
       const result = await fetch(`https://rop898gbik.execute-api.us-west-2.amazonaws.com/initial`, {
         mode: 'cors',
@@ -96,9 +107,17 @@ export default class ChatWindow extends Component {
         body: JSON.stringify({'source': this.state.storedMessage[i].language, 'target': language, 'text': this.state.storedMessage[i].chat})
       });
       const content = await result.json();
-      console.log(content);
-
+      let newM={
+        "chat":content.body.TranslatedText,
+        "userName":this.props.userName,
+        "language":language
+      }
+          newArr.push(newM);
+      console.log(content.body.TranslatedText);
     }
+   this.setState({
+     storedMessage: newArr
+   });
   }
 
   render() {
@@ -106,12 +125,8 @@ export default class ChatWindow extends Component {
       // [..]
       showEmojiPicker,
     } = this.state;
-    
-    let messageList = [];
-    for (let i = 0; i < this.state.storedMessage.length; i++) {
-      messageList.push(
-        <li key={i}>{this.state.storedMessage[i].userName} says: {this.state.storedMessage[i].chat}.</li>)
-    }
+    console.log("running");
+
     return (
       <Fragment>
         <form onChange={event => this.selectLanguage(event)}>
@@ -137,7 +152,7 @@ export default class ChatWindow extends Component {
       </form>
      
       <ul>
-      {messageList}
+      {this.state.storedMessage.map( (message,i) => <li key={i}>{message.userName} says: {message.chat}.</li>)}
       </ul>
       </Fragment>
     );
