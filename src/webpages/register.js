@@ -3,7 +3,6 @@ import 'crypto-js/lib-typedarrays';
 import { Auth } from "aws-amplify";
 import Navigation from './nav';
 import '../css/register.css';
-import '../css/reset.css';
 
 export default class Register extends Component {
 
