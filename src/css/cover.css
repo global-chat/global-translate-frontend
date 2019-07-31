@@ -2,6 +2,12 @@
  * Globals
  */
 
+ /* Color Scheme */
+ /* dark blue: #293462
+ slate blue: #216583
+ turqoise: #00818a
+ yellow: #f7be16 */
+
 /* Links */
 a,
 a:focus,
@@ -13,10 +19,17 @@ a:hover {
 .btn-secondary,
 .btn-secondary:hover,
 .btn-secondary:focus {
-  color: #333;
+  color: #f7be16;
   text-shadow: none; /* Prevent inheritance from `body` */
-  background-color: #fff;
-  border: .05rem solid #fff;
+  background-color: #00818a;
+  border: .05rem solid #f7be16;
+}
+
+.btn-secondary:hover {
+  color: #00818a;
+  text-shadow: none; /* Prevent inheritance from `body` */
+  background-color: #f7be16;
+  border: .05rem solid #00818a;
 }
 
 
