@@ -3,7 +3,13 @@ import { Smile } from 'react-feather';
 import { Picker } from 'emoji-mart'
 import Sockette from "sockette";
 import 'emoji-mart/css/emoji-mart.css'
+import 'cors';
+
+require('cors');
+
 let ws = null;
+
+
 
 export default class ChatWindow extends Component {
   constructor(props) {
@@ -24,7 +30,6 @@ export default class ChatWindow extends Component {
         maxAttempts: 1,
         onopen: e => {
           console.log("connected:", e);
-          this.sendInitial();
         },
         onmessage: e => this.onMessageReceived(e),
         onreconnect: e => console.log("Reconnecting...", e),
@@ -79,30 +84,20 @@ export default class ChatWindow extends Component {
 
   selectLanguage = async event => {
     let translatedMessage = []
+    const language =  event.target.value;
     for (let i = 0; i < this.state.storedMessage.length; i++) {
-      fetch(`https://rop898gbik.execute-api.us-west-2.amazonaws.com/initial`, {
+      const result = await fetch(`https://rop898gbik.execute-api.us-west-2.amazonaws.com/initial`, {
         mode: 'cors',
         method: 'POST',
         headers: {
-          'Status': '200',
-          'Access-Control-Allow-Origin': true,
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
-        body: JSON.stringify({'source': this.state.storedMessage[i].language, 'target': this.state.language, 'text': this.state.storedMessage[i].chat})
-      })
-      .then(data => {
-        console.log(data);
-        let chatObject = {
-          'text': data.TranslatedText,
-          'language': data.TargetLanguageCode,
-          'userName': this.state.storedMessage[i].userName
-        }
-        console.log(chatObject);
-        translatedMessage.push(chatObject);
-      })
-      this.setState({storedMessage: []});
-      this.setState({ storedMessage: [...this.state.storedMessage, translatedMessage] })
+        body: JSON.stringify({'source': this.state.storedMessage[i].language, 'target': language, 'text': this.state.storedMessage[i].chat})
+      });
+      const content = await result.json();
+      console.log(content);
+
     }
   }
 
