@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from "react";
 import Sockette from "sockette";
+
+
 let ws = null;
 
 export default class ChatWindow extends Component {
@@ -7,7 +9,8 @@ export default class ChatWindow extends Component {
     super(props);
 
     this.state = {
-      storedMessage: []
+      storedMessage: [],
+      language: "en"
     };
   }
 
@@ -40,27 +43,67 @@ export default class ChatWindow extends Component {
     event.preventDefault();
     ws.json({
       message: "sendMessage",
-      data: {"chat":event.target.chat.value, "userName": this.props.userName}
+      data: { "text": event.target.chat.value, "userName": this.props.userName, "language": this.state.language }
     });
   }
 
+  selectLanguage = async event => {
+    let translatedMessage = []
+    for (let i = 0; i < this.state.storedMessage.length; i++) {
+      fetch(`https://rop898gbik.execute-api.us-west-2.amazonaws.com/initial`, {
+        mode: 'cors',
+        method: 'POST',
+        headers: {
+          'Statue': '200',
+          'Access-Control-Allow-Origin': "",
+          "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With",
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({'source': this.state.storedMessage[i].language, 'target': this.state.language, 'text': this.state.storedMessage[i].text})
+      })
+      .then(data => {
+        console.log(data);
+        let chatObject = {
+          'text': data.TranslatedText,
+          'language': data.TargetLanguageCode,
+          'userName': this.state.storedMessage[i].userName
+        }
+        console.log(chatObject);
+        translatedMessage.push(chatObject);
+      })
+      this.setState({storedMessage: []});
+      this.setState({ storedMessage: [...this.state.storedMessage, translatedMessage] })
+    }
+  }
+
   render() {
+    console.log(this.state.storedMessage);
     let messageList = [];
-    for(let i = 0; i < this.state.storedMessage.length; i++) {
+    for (let i = 0; i < this.state.storedMessage.length; i++) {
       messageList.push(
-      <li key={i}>{this.state.storedMessage[i].userName} says: {this.state.storedMessage[i].chat}.</li>)
+        <li key={i}>{this.state.storedMessage[i].userName} says: {this.state.storedMessage[i].text}.</li>)
     }
     return (
       <Fragment>
-      <form onSubmit={event => this.onSendMessage(event)} >
-        <div className="container">
-          <input type="text" placeholder="Enter Text" name="chat" required />
-          <button className="sendbtn">Send</button>
-        </div>
-      </form>
-      <ul>
-      {messageList}
-      </ul>
+        <form onChange={event => this.selectLanguage(event)}>
+          <select>
+            <option value="en">English</option>
+            <option value="fr">French</option>
+            <option value="de">German</option>
+            <option value="es">Spanish</option>
+          </select>
+        </form>
+        <form onSubmit={event => this.onSendMessage(event)} >
+          <div className="container">
+            <input type="text" placeholder="Enter Text" name="chat" required />
+            <button className="sendbtn">Send</button>
+          </div>
+        </form>
+        <ul>
+          {messageList}
+        </ul>
       </Fragment>
     );
   }

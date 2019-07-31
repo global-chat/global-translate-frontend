@@ -8,7 +8,7 @@ export const Layout = (props) => (
   <Container>
     <Row>
       <Col>
-        <h1 class="bg-info">Navbar</h1>
+        <h1 className="bg-info">Navbar</h1>
       </Col>
     </Row>
     <Row>
