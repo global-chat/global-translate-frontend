@@ -2,7 +2,16 @@ import React, { Component, Fragment } from "react";
 import { Smile } from 'react-feather';
 import { Picker } from 'emoji-mart'
 import Sockette from "sockette";
+<<<<<<< HEAD
 import 'emoji-mart/css/emoji-mart.css'
+=======
+import Navigation from "./nav";
+import './emoji-mart.css'
+// import 'emoji-mart/css/emoji-mart.css'
+import 'cors';
+
+require('cors');
+>>>>>>> d12511d0a7df4eba02fabf81ebbaf0df76df1913
 
 let ws = null;
 export default class ChatWindow extends Component {
