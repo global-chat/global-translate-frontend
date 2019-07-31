@@ -9,12 +9,9 @@ export const Layout = (props) => (
   <Container>
     <Row>
       <Col>
-<<<<<<< HEAD
         {/* <h1 class="bg-info">Navbar</h1> */}
         {/* <Navbar props={this.props} logout={this.props.logoutUser} userName={this.props.userName} userToken={this.props.userToken}></Navbar>  */}
-=======
         <h1 className="bg-info">Navbar</h1>
->>>>>>> 2e7375029728c253d73860b34d36984b85a41c2b
       </Col>
     </Row>
     <Row>
