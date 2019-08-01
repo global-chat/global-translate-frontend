@@ -11,7 +11,7 @@ export const Layout = (props) => (
       <Col>
         {/* <h1 class="bg-info">Navbar</h1> */}
         {/* <Navbar props={this.props} logout={this.props.logoutUser} userName={this.props.userName} userToken={this.props.userToken}></Navbar>  */}
-        <h1 className="bg-info">Navbar</h1>
+        {/* <h1 className="bg-info">Navbar</h1> */}
       </Col>
     </Row>
     <Row>
