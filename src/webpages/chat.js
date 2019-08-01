@@ -84,7 +84,7 @@ else{
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
-        body: JSON.stringify({'source': "en", 'target': this.state.target, 'text': event.target.chat.value})
+        body: JSON.stringify({'source': "auto", 'target': this.state.target, 'text': event.target.chat.value})
       });
       const content = await result.json();
       const msg=content.body.TranslatedText;
