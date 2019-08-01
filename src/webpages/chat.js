@@ -30,6 +30,7 @@ export default class ChatWindow extends Component {
         maxAttempts: 1,
         onopen: e => {
           console.log("connected:", e);
+          this.sendInitial();
         },
         onmessage: e => this.onMessageReceived(e),
         onreconnect: e => console.log("Reconnecting...", e),
@@ -47,12 +48,13 @@ export default class ChatWindow extends Component {
   sendInitial = () => {
     ws.json({
       message: "sendMessage",
-      data: "Initial"
+      data: { "chat": `${this.props.userName} has joined the chat.`, "userName": this.props.userName, "language": "en", "state": "onconnect" }
     });
   }
 
   onMessageReceived = ({ data }) => {
     let message = JSON.parse(data);
+    console.log(message);
     this.setState({ storedMessage: [...this.state.storedMessage, message] });
   };
  
@@ -60,7 +62,7 @@ export default class ChatWindow extends Component {
     event.preventDefault();
     ws.json({
       message: "sendMessage",
-      data: { "chat": event.target.chat.value, "userName": this.props.userName, "language": this.state.language }
+      data: { "chat": event.target.chat.value, "userName": this.props.userName, "language": this.state.language, "to": "all" }
     });
   }
   addEmoji = (e) => {
@@ -97,7 +99,6 @@ export default class ChatWindow extends Component {
       });
       const content = await result.json();
       console.log(content);
-
     }
   }
 
@@ -109,8 +110,12 @@ export default class ChatWindow extends Component {
     
     let messageList = [];
     for (let i = 0; i < this.state.storedMessage.length; i++) {
-      messageList.push(
+      if(this.state.storedMessage[i].state === "onconnect" || "ondisconnect" ) {
+        messageList.push(<li key={i}>{this.state.storedMessage[i].chat}.</li>)
+      } else {
+        messageList.push(
         <li key={i}>{this.state.storedMessage[i].userName} says: {this.state.storedMessage[i].chat}.</li>)
+      }
     }
     return (
       <Fragment>
