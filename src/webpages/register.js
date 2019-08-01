@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import 'crypto-js/lib-typedarrays';
 import { Auth } from "aws-amplify";
 import Navigation from './nav';
-import '../css/register.css';
+import '../scss/core.scss';
 
 export default class Register extends Component {
 
