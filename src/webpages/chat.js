@@ -25,6 +25,7 @@ export default class ChatWindow extends Component {
         maxAttempts: 1,
         onopen: e => {
           console.log("connected:", e);
+          this.sendInitial();
         },
         onmessage: e => this.onMessageReceived(e),
         onreconnect: e => console.log("Reconnecting...", e),
@@ -42,7 +43,7 @@ export default class ChatWindow extends Component {
   sendInitial = () => {
     ws.json({
       message: "sendMessage",
-      data: "Initial"
+      data: { "chat": `${this.props.userName} has joined the chat.`, "userName": this.props.userName, "language": "en", "state": "onconnect" }
     });
   }
 
@@ -84,7 +85,7 @@ else{
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
-        body: JSON.stringify({'source': "en", 'target': this.state.target, 'text': event.target.chat.value})
+        body: JSON.stringify({'source': "auto", 'target': this.state.target, 'text': event.target.chat.value})
       });
       const content = await result.json();
       const msg=content.body.TranslatedText;
@@ -134,7 +135,7 @@ else{
         "language":trlanguage,
         "isEmoji":false
       }
-          newArr.push(newM);
+      newArr.push(newM);
       console.log(content.body.TranslatedText);
     }
     else{
@@ -180,7 +181,7 @@ else{
       </form>
      
       <ul>
-      {this.state.storedMessage.map( (message,i) => <li key={i}>{message.userName} says: {message.chat}.</li>)}
+      {this.state.storedMessage.map( (message,i) => <li >{message.userName} says: {message.chat}.</li>)}
       </ul>
       </Fragment>
     );
