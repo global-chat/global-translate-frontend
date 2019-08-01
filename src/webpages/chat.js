@@ -180,7 +180,7 @@ else{
       </form>
      
       <ul>
-      {this.state.storedMessage.map( (message,i) => <li key={i}>{message.userName} says: {message.chat}.</li>)}
+      {this.state.storedMessage.map( (message,i) => <li>{message.userName} says: {message.chat}.</li>)}
       </ul>
       </Fragment>
     );
