@@ -12,6 +12,7 @@ export default class ChatWindow extends Component {
     this.state = {
       storedMessage: [],
       language: "en",
+      target:"en",
       showEmojiPicker: false,
     };
   }
@@ -45,14 +46,30 @@ export default class ChatWindow extends Component {
     });
   }
 
-  onMessageReceived = ({ data }) => {
+  onMessageReceived = async ({ data }) => {
     let message = JSON.parse(data);
     console.log(message);
-    this.setState({ storedMessage: [...this.state.storedMessage, message] });
+    if(!message.isEmoji){
+    const result = await fetch(`https://rop898gbik.execute-api.us-west-2.amazonaws.com/initial`, {
+      mode: 'cors',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({'source': message.language, 'target': this.state.target, 'text': message.chat})
+    });
+    const content = await result.json();
+    const msg=content.body.TranslatedText;
+    message.chat=msg;
+    message.language=this.state.target;
+  }
+    this.setState({ storedMessage: [...this.state.storedMessage, message]});
   };
  
   onSendMessage =async event => {
     event.preventDefault();
+    console.log(event.target.chat);
      if(event.native!=null){
       ws.json({
         message: "sendMessage",
@@ -67,13 +84,13 @@ else{
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
-        body: JSON.stringify({'source': "en", 'target': this.state.language, 'text': event.target.chat.value})
+        body: JSON.stringify({'source': "en", 'target': this.state.target, 'text': event.target.chat.value})
       });
       const content = await result.json();
       const msg=content.body.TranslatedText;
     ws.json({
       message: "sendMessage",
-      data: { "chat": msg, "userName": this.props.userName, "language": this.state.language ,"isEmoji": false}
+      data: { "chat": msg, "userName": this.props.userName, "language": this.state.target ,"isEmoji": false}
     });
   }
   };
@@ -87,15 +104,17 @@ else{
       data: {"chat":e.native, "userName": this.props.userName,"isEmoji": true}
     });
   };
+
+  //toggle emoji box
   changeStatus = (e)=>{
     this.setState({showEmojiPicker: !this.state.showEmojiPicker});
   };
 
   selectLanguage = async event => {
     let newArr=[];
-    const language =  event.target.value;
+    const trlanguage =  event.target.value;
     this.setState({
-      "language":language
+      "target":trlanguage
     });
     for (let i = 0; i < this.state.storedMessage.length; i++) {
       if(!this.state.storedMessage[i].isEmoji){
@@ -106,13 +125,14 @@ else{
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
-        body: JSON.stringify({'source': this.state.storedMessage[i].language, 'target': language, 'text': this.state.storedMessage[i].chat})
+        body: JSON.stringify({'source': this.state.storedMessage[i].language, 'target': trlanguage, 'text': this.state.storedMessage[i].chat})
       });
       const content = await result.json();
       let newM={
         "chat":content.body.TranslatedText,
         "userName":this.props.userName,
-        "language":language
+        "language":trlanguage,
+        "isEmoji":false
       }
           newArr.push(newM);
       console.log(content.body.TranslatedText);
@@ -142,6 +162,7 @@ else{
             <option value="fr">French</option>
             <option value="de">German</option>
             <option value="es">Spanish</option>
+            <option value="zh">Chinese</option>
           </select>
         </form>
       <form onSubmit={event => this.onSendMessage(event)} >
