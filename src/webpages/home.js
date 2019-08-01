@@ -23,7 +23,7 @@ export default class Home extends Component {
             <Card />
           </Row> */}
           <Navigation props={this.props} logout={this.props.logoutUser} userName={this.props.userName} userToken={this.props.userToken}></Navigation>
-          <Container>
+          <Container class="container">
           <main role="main" class="inner cover">
             <Row>
 

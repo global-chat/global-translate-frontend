@@ -38,13 +38,13 @@ a:hover {
  */
 
 html,
-body {
+body.container {
   height: 100%;
   background-image: url('../images/earth.jpg');
   background-size: cover;
 }
 
-body {
+body.container {
   display: -ms-flexbox;
   display: -webkit-box;
   display: flex;
