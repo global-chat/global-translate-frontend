@@ -6,7 +6,7 @@ import Card from '../components/card';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import '../css/home.css';
+// import '../css/home.css';
 import '../css/cover.css';
 
 
@@ -14,14 +14,7 @@ export default class Home extends Component {
   render() {
     return (
       <Fragment>
-        
         <Layout>
-          {/* <Jumbotron />
-          <Row>
-            <Card />
-            <Card />
-            <Card />
-          </Row> */}
           <Navigation props={this.props} logout={this.props.logoutUser} userName={this.props.userName} userToken={this.props.userToken}></Navigation>
           <Container class="container">
           <main role="main" class="inner cover ">
