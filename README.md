@@ -1,8 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Gloable Chat
 
-In the project directory, you can run:
+This is a multi-language chat app which allows user to chat in different languages. And users are be able to chat with each other in their own language  and one chat room can hold many users.
 
 ### `npm start`
 
