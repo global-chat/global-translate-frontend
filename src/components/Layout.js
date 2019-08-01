@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from '../webpages/nav';
+import Nav from '../webpages/nav';
 //import Footer from './components/footer.js'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -9,9 +9,7 @@ export const Layout = (props) => (
   <Container>
     <Row>
       <Col>
-        {/* <h1 class="bg-info">Navbar</h1> */}
-        {/* <Navbar props={this.props} logout={this.props.logoutUser} userName={this.props.userName} userToken={this.props.userToken}></Navbar>  */}
-        {/* <h1 className="bg-info">Navbar</h1> */}
+        <Nav />
       </Col>
     </Row>
     <Row>

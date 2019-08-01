@@ -15,32 +15,16 @@ export default class Home extends Component {
     return (
       <Fragment>
         <Layout>
-          <Navigation props={this.props} logout={this.props.logoutUser} userName={this.props.userName} userToken={this.props.userToken}></Navigation>
-          <Container class="container">
+          {/* <Navigation props={this.props} logout={this.props.logoutUser} userName={this.props.userName} userToken={this.props.userToken}></Navigation> */}
           <main role="main" class="inner cover ">
-            <Row>
-
-              <Col>
-                <h1 class="cover-heading">Cover your page.</h1>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <p class="lead">
-                  <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
-                </p>
-              </Col>
-            </Row>
-            </main> 
-          </Container>
+              <h1 class="cover-heading">Cover your page.</h1>
+              <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+              <p class="lead">
+                <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
+              </p>
+          </main> 
         </Layout>
       </Fragment>
-
     );
   }
 }
