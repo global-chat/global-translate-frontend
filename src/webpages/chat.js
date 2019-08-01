@@ -18,8 +18,9 @@ export default class ChatWindow extends Component {
   }
  
   componentDidMount() {
+    console.log(this.props.userToken);
     ws = new Sockette(
-      `wss://6u0sg2u4x6.execute-api.us-west-2.amazonaws.com/Test?username=${this.props.userName}`,
+      `wss://6u0sg2u4x6.execute-api.us-west-2.amazonaws.com/Test?username=${this.props.userName}&token=${this.props.userToken}`,
       {
         timeout: 5e3,
         maxAttempts: 1,
@@ -77,7 +78,7 @@ export default class ChatWindow extends Component {
         data: {"chat":event.native, "userName": this.props.userName,"language": this.state.language,"isEmoji": true}
       });
      }
-else{
+    else{
     const result = await fetch(`https://rop898gbik.execute-api.us-west-2.amazonaws.com/initial`, {
         mode: 'cors',
         method: 'POST',
@@ -87,8 +88,8 @@ else{
         },
         body: JSON.stringify({'source': "auto", 'target': this.state.target, 'text': event.target.chat.value})
       });
-      const content = await result.json();
-      const msg=content.body.TranslatedText;
+    const content = await result.json();
+    const msg=content.body.TranslatedText;
     ws.json({
       message: "sendMessage",
       data: { "chat": msg, "userName": this.props.userName, "language": this.state.target ,"isEmoji": false}
