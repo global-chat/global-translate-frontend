@@ -2,16 +2,7 @@ import React, { Component, Fragment } from "react";
 import { Smile } from 'react-feather';
 import { Picker } from 'emoji-mart'
 import Sockette from "sockette";
-<<<<<<< HEAD
 import 'emoji-mart/css/emoji-mart.css'
-=======
-import Navigation from "./nav";
-import './emoji-mart.css'
-// import 'emoji-mart/css/emoji-mart.css'
-import 'cors';
-
-require('cors');
->>>>>>> d12511d0a7df4eba02fabf81ebbaf0df76df1913
 
 let ws = null;
 export default class ChatWindow extends Component {
@@ -62,7 +53,13 @@ export default class ChatWindow extends Component {
  
   onSendMessage =async event => {
     event.preventDefault();
-
+     if(event.native!=null){
+      ws.json({
+        message: "sendMessage",
+        data: {"chat":event.native, "userName": this.props.userName,"language": this.state.language,"isEmoji": true}
+      });
+     }
+else{
     const result = await fetch(`https://rop898gbik.execute-api.us-west-2.amazonaws.com/initial`, {
         mode: 'cors',
         method: 'POST',
@@ -76,8 +73,9 @@ export default class ChatWindow extends Component {
       const msg=content.body.TranslatedText;
     ws.json({
       message: "sendMessage",
-      data: { "chat": msg, "userName": this.props.userName, "language": this.state.language }
+      data: { "chat": msg, "userName": this.props.userName, "language": this.state.language ,"isEmoji": false}
     });
+  }
   };
 
   addEmoji = (e) => {
@@ -86,17 +84,11 @@ export default class ChatWindow extends Component {
     // this.setState({ storedMessage: [...this.state.storedMessage, message] });
     ws.json({
       message: "sendMessage",
-      data: {"chat":e.native, "userName": this.props.userName}
+      data: {"chat":e.native, "userName": this.props.userName,"isEmoji": true}
     });
   };
   changeStatus = (e)=>{
-  if(this.state.showEmojiPicker===false){
-    this.setState({showEmojiPicker:true});
-  }
-  else{
-    this.setState({showEmojiPicker:false});
-  }
-
+    this.setState({showEmojiPicker: !this.state.showEmojiPicker});
   };
 
   selectLanguage = async event => {
@@ -106,6 +98,7 @@ export default class ChatWindow extends Component {
       "language":language
     });
     for (let i = 0; i < this.state.storedMessage.length; i++) {
+      if(!this.state.storedMessage[i].isEmoji){
       const result = await fetch(`https://rop898gbik.execute-api.us-west-2.amazonaws.com/initial`, {
         mode: 'cors',
         method: 'POST',
@@ -124,6 +117,11 @@ export default class ChatWindow extends Component {
           newArr.push(newM);
       console.log(content.body.TranslatedText);
     }
+    else{
+      newArr.push(this.state.storedMessage[i]);
+    }
+  }
+  
    this.setState({
      storedMessage: newArr
    });
