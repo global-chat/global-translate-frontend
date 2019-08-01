@@ -61,7 +61,12 @@ export default class ChatWindow extends Component {
       body: JSON.stringify({'source': message.language, 'target': this.state.target, 'text': message.chat})
     });
     const content = await result.json();
-    const msg=content.body.TranslatedText;
+    let msg;
+    if (content.body){
+      msg=content.body.TranslatedText;
+    } else {
+      msg=message.chat;
+    }
     message.chat=msg;
     message.language=this.state.target;
   }
@@ -69,6 +74,7 @@ export default class ChatWindow extends Component {
   };
  
   onSendMessage =async event => {
+    let messageValue = event.target.chat.value;
     event.preventDefault();
     console.log(event.target.chat);
      if(event.native!=null){
@@ -76,8 +82,9 @@ export default class ChatWindow extends Component {
         message: "sendMessage",
         data: {"chat":event.native, "userName": this.props.userName,"language": this.state.language,"isEmoji": true}
       });
-     }
-else{
+     } else{
+ 
+
     const result = await fetch(`https://rop898gbik.execute-api.us-west-2.amazonaws.com/initial`, {
         mode: 'cors',
         method: 'POST',
@@ -88,13 +95,34 @@ else{
         body: JSON.stringify({'source': "auto", 'target': this.state.target, 'text': event.target.chat.value})
       });
       const content = await result.json();
-      const msg=content.body.TranslatedText;
+      let msg;
+      if(content.body) {
+        msg=content.body.TranslatedText;
+      } else {
+        msg = messageValue;
+      }
     ws.json({
       message: "sendMessage",
       data: { "chat": msg, "userName": this.props.userName, "language": this.state.target ,"isEmoji": false}
     });
+  
+
   }
   };
+
+
+//check if the input only contains symbols
+//checkInputIfOnlyHasSymbol = (str)=>{
+//   var format = ['[','!','@','#','$','%','^','&','*','(',')','_','+','\\','-','=',']','{','}',';',':','"','|',',','.','<','>','/','?','\'','~','`'];
+//   for(let i=0;i<str.length;i++){
+//     if(!format.includes(str[i]))  
+//     return false;
+//   }
+//   console.log("it only has symbols!");
+//   return true;
+// }
+
+
 
   addEmoji = (e) => {
     console.log(e.native)
