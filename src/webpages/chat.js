@@ -159,11 +159,23 @@ else{
       <Fragment>
         <form onChange={event => this.selectLanguage(event)}>
           <select>
-            <option value="en">English</option>
-            <option value="fr">French</option>
-            <option value="de">German</option>
-            <option value="es">Spanish</option>
-            <option value="zh">Chinese</option>
+          <option value="en">English</option>
+          <option value="ar">Arabic</option>
+          <option value="zh">Chinese</option>
+          <option value="cs">Czech</option>
+          <option value="da">Danish</option>
+          <option value="nl">Dutch</option>
+          <option value="fi">Finnish</option>
+          <option value="fr">French</option>
+          <option value="de">German</option>
+          <option value="he">Hebrew</option>
+          <option value="hi">Hindi</option>
+          <option value="id">Indonesian</option>
+          <option value="ja">Japanese</option>
+          <option value="ko">Korean</option>
+          <option value="ru">Russian</option>
+          <option value="es">Spanish</option>
+          
           </select>
         </form>
       <form onSubmit={event => this.onSendMessage(event)} >
