@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import { Smile } from 'react-feather';
 import { Picker } from 'emoji-mart'
 import Sockette from "sockette";
+import Navigation from './nav';
 import 'emoji-mart/css/emoji-mart.css'
 
 let ws = null;
@@ -157,6 +158,7 @@ else{
 
     return (
       <Fragment>
+        <Navigation></Navigation>
         <form onChange={event => this.selectLanguage(event)}>
           <select>
             <option value="en">English</option>
