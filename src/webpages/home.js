@@ -24,7 +24,7 @@ export default class Home extends Component {
           </Row> */}
           <Navigation props={this.props} logout={this.props.logoutUser} userName={this.props.userName} userToken={this.props.userToken}></Navigation>
           <Container class="container">
-          <main role="main" class="inner cover">
+          <main role="main" class="inner cover ">
             <Row>
 
               <Col>
