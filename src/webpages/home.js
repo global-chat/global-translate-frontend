@@ -6,8 +6,8 @@ import Card from '../components/card';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import '../css/home.css';
-import '../css/cover.css';
+// import '../css/home.css';
+// import '../css/cover.css';
 
 
 export default class Home extends Component {
