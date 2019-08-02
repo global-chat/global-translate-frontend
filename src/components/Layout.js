@@ -1,5 +1,5 @@
 import React from 'react';
-import Nav from '../webpages/nav';
+import NavComponent from '../webpages/nav';
 //import Footer from './components/footer.js'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -9,7 +9,7 @@ export const Layout = (props) => (
   <Container>
     <Row>
       <Col>
-        <Nav />
+        <NavComponent />
       </Col>
     </Row>
     <Row>
