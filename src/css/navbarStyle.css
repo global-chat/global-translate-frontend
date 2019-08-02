@@ -1,3 +1,32 @@
 .brandSection {
   padding-left: 10%;
 }
+
+.navigation {
+   color:whitesmoke;
+   z-index: 100;
+   margin-top: 0px;
+   font-size: 25px;
+}
+
+button {
+  padding: 0;
+  border: none;
+  background: none;
+  color: whitesmoke;
+  font-size: 25px;
+}
+
+li {
+  margin-right: 10px;
+}
+
+li:hover {
+  cursor:pointer;
+  font-style: bold;
+  color: grey;
+}
+
+h1 {
+  font-size: 30px;
+}
