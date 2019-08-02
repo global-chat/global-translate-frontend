@@ -10,9 +10,9 @@ A frontend application using a backend Lambda Function and API Gateway
 <!-- Screenshots of the application -->
 ## ScreenShots of Application
 
-[Screenshot1][]
-[Screenshot2][]
-[Screenshot3][]
+[Screenshot1](https://github.com/global-chat/global-translate-frontend/blob/master/src/images/screenshot1.png)
+[Screenshot2](https://github.com/global-chat/global-translate-frontend/blob/master/src/images/screenshot2.png)
+[Screenshot3](https://github.com/global-chat/global-translate-frontend/blob/master/src/images/screenshot3.png)
 
 <!-- A link to the deployed application (where applicable) -->
 ##  Deployed Link for Application
