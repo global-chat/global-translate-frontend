@@ -6,7 +6,7 @@
    color:whitesmoke;
    z-index: 100;
    margin-top: 0px;
-   font-size: 25px;
+   font-size: 17px;
 }
 
 button {
@@ -14,7 +14,7 @@ button {
   border: none;
   background: none;
   color: whitesmoke;
-  font-size: 25px;
+  font-size: 17px;
 }
 
 li {
@@ -28,5 +28,5 @@ li:hover {
 }
 
 h1 {
-  font-size: 30px;
+  font-size: 20px;
 }
