@@ -10,8 +10,13 @@ A frontend application using a backend Lambda Function and API Gateway
 <!-- Screenshots of the application -->
 ## ScreenShots of Application
 
+[Screenshot1][]
+[Screenshot2][]
+[Screenshot3][]
+
 <!-- A link to the deployed application (where applicable) -->
 ##  Deployed Link for Application
+[Deployed Website](https://d3txzunf41i72v.cloudfront.net/)
 <!-- Links to any other repos used in the application (where applicable) -->
 ## Links to Other Repos
 - N/A
