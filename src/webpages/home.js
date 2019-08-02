@@ -1,8 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import Navigation from './nav';
 import Layout from '../components/layout';
-// import '../css/home.css';
-// import '../css/cover.css';
 import '../css/main.css'
 
 

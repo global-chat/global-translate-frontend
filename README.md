@@ -1,68 +1,63 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Found in Translation
+<!-- An overview of the application and its functionality -->
+## Overview
 
-## Gloable Chat
+We created this application so people can communicate with each other requardless of one's language barrier. The Application is a chatroom that people can join and select their language preference and start chatting with another person. Everybody that joined the chat will have a different screen depending on the language they selected. For Example, if I selected Chinese and join the chat room and my friend selected German his screen will be in German and my screen will be in Chinese.
 
-This is a multi-language chat app which allows user to chat in different languages. And users are be able to chat with each other in their own language  and one chat room can hold many users.
+<!-- An architecture and/or data-flow drawing (preferably in UML) that illustrates how your application works. -->
+## Architecture of Application
+A frontend application using a backend Lambda Function and API Gateway
+<!-- Screenshots of the application -->
+## ScreenShots of Application
 
-### `npm start`
+<!-- A link to the deployed application (where applicable) -->
+##  Deployed Link for Application
+<!-- Links to any other repos used in the application (where applicable) -->
+## Links to Other Repos
+- N/A
+<!-- A list of technologies used in the application -->
+## Technologies Used
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Visual Studio Code
+- AWS Translate
+- AWS Websocket
+- AWS Dynamo DB
+- AWS Lambda
+- API Gateway
+- AWS IAM
+- AWS Cloudformation
+- AWS CodePipeline
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+<!-- Directions to run the application, both for local development and in production -->
+## Directions to Run Application
+### To run locally
 
-### `npm test`
+- Go to Github Repo for Application
+- Copy Clone Repo Link from GitHub Repo
+- Go to computer Terminal and type "git clone 'Clone Repo Link here'
+- Go into the Repo directory in the terminal
+- To run application type 'npm start'
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### To run Deployed site
 
-### `npm run build`
+- 'Deployed Site Here'
+<!-- these should be very detailed! -->
+<!-- Links to each team member's GitHub profile -->
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Team Members GitHub Pages
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+[Xia liu](https://github.com/xialiu1988)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+[Vinh Ngyuen](https://github.com/nguyenvinh2)
 
-### `npm run eject`
+[Charles Clemens](https://github.com/CClemensJr)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+[Anthony Berry](https://github.com/Antberry)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Reference:
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+https://serverless-stack.com/chapters/create-a-cognito-identity-pool.html
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+This tutorial was used to create Cognito account management as well as handle authentication routes in React.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+AWS 

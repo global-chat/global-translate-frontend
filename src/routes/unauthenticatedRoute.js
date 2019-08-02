@@ -1,6 +1,9 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
+//https://serverless-stack.com/chapters/setup-secure-pages.html
+//used this tutorial handle secured routing
+
 function querystring(name, url = window.location.href) {
   name = name.replace(/[[]]/g, "\\$&");
 
