@@ -9,7 +9,7 @@ export default class Home extends Component {
     return (
       <Fragment>
         <Layout>
-          {/* <Navigation props={this.props} logout={this.props.logoutUser} userName={this.props.userName} userToken={this.props.userToken}></Navigation> */}
+          <Navigation props={this.props} logout={this.props.logoutUser} userName={this.props.userName} userToken={this.props.userToken}></Navigation>
         
           <main>
             <section id="home">
