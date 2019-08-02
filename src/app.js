@@ -50,7 +50,7 @@ class App extends Component {
     this.setUserName(null);
     this.setUserToken(null);
 
-    this.props.history.push("/login");
+    this.props.history.push("/");
     } catch(e) {
       alert(e);
     }

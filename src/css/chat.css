@@ -1,0 +1,52 @@
+.chat-form {
+  margin-top: 150px;
+  text-align: center;
+}
+
+select {
+  font-size: 30px;
+}
+
+
+.chat-form input[type=text] {
+  width: 25%;
+  padding: 10px 10px;
+  margin: 10px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+}
+
+.chat-form button {
+  width: 5%;
+  font-size: 10px;
+  padding: 10px 10px;
+  margin: 10px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  background-color: orangered;
+}
+
+.chat-box {
+  margin: 15px auto 15px auto;
+  text-align: center;
+  background-color: whitesmoke;
+  width: 75%;
+  overflow-y: scroll;
+  border-radius: 15px;
+}
+
+.chat-box li {
+  list-style: none;
+  margin: 20px 30px;
+  font-size: 25px;
+}
+
+.chat-left {
+  text-align: left;
+  background-color: khaki;
+}
+
+.chat-right {
+  text-align: right;
+  background-color: lightblue
+}

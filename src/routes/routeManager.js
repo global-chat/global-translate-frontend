@@ -18,5 +18,5 @@ export default ({ childProps }) =>
     <RoutePath path='/register' exact component={Register} props={childProps} />
     <UnauthenticatedRoute path='/login' exact component={Login} props={childProps} />
     <AuthenticatedRoute path='/chat' exact component={ChatWindow} props={childProps}/>
-    <RoutePath path="/aboutus" exact component={AboutUs}/>
+    <RoutePath path="/aboutus" exact component={AboutUs} props={childProps}/>
   </Switch>

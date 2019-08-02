@@ -4,13 +4,6 @@ body{
   background-color: #F7BE16;
 }
 
-/* .theform{
-  background-color: #216583;
-  width: 980px;
-  margin: auto;
-  border-radius: 15px;
-} */
-
 .container{
   display: grid;
   background-color: #216583;

@@ -1,0 +1,46 @@
+.about {
+  margin-top: 150px;
+}
+
+.about h2 {
+  color: whitesmoke;
+  font-size: 50px;
+  text-align: center;
+}
+
+.slide-container{
+  width: 75%;
+  text-align: center;
+  margin: 15px auto 15px auto;
+}
+
+.slide-container img {
+  width: 250px;
+  border-radius: 30px;
+}
+
+.portrait {
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 15px auto 15px auto;
+  background-color: antiquewhite;
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.portrait div {
+  width: 25%;
+}
+
+.portrait div p {
+  font-size: 30px;
+  font-weight: bolder;
+}
+
+.description {
+  width: 50%;
+  font-size: 20px;
+  font-family: 'Delius', cursive;
+}

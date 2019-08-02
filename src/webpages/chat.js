@@ -3,6 +3,7 @@ import { Smile } from 'react-feather';
 import { Picker } from 'emoji-mart'
 import Sockette from "sockette";
 import Navigation from './nav';
+import '../css/chat.css';
 import 'emoji-mart/css/emoji-mart.css'
 
 let ws = null;
@@ -164,45 +165,55 @@ export default class ChatWindow extends Component {
     } = this.state;
     return (
       <Fragment>
-        <Navigation></Navigation>
-        <form onChange={event => this.selectLanguage(event)}>
-          <select>
-            <option value="en">English</option>
-            <option value="ar">Arabic</option>
-            <option value="zh">Chinese</option>
-            <option value="cs">Czech</option>
-            <option value="da">Danish</option>
-            <option value="nl">Dutch</option>
-            <option value="fi">Finnish</option>
-            <option value="fr">French</option>
-            <option value="de">German</option>
-            <option value="he">Hebrew</option>
-            <option value="hi">Hindi</option>
-            <option value="id">Indonesian</option>
-            <option value="ja">Japanese</option>
-            <option value="ko">Korean</option>
-            <option value="ru">Russian</option>
-            <option value="es">Spanish</option>
+        <Navigation auth={this.props.isAuthenticated} props={this.props} logout={this.props.logoutUser} userName={this.props.userName} userToken={this.props.userToken}></Navigation>
+        <div className="chat-form">
+          <form onChange={event => this.selectLanguage(event)}>
+            <select>
+              <option value="en">English</option>
+              <option value="ar">Arabic</option>
+              <option value="zh">Chinese</option>
+              <option value="cs">Czech</option>
+              <option value="da">Danish</option>
+              <option value="nl">Dutch</option>
+              <option value="fi">Finnish</option>
+              <option value="fr">French</option>
+              <option value="de">German</option>
+              <option value="he">Hebrew</option>
+              <option value="hi">Hindi</option>
+              <option value="id">Indonesian</option>
+              <option value="ja">Japanese</option>
+              <option value="ko">Korean</option>
+              <option value="ru">Russian</option>
+              <option value="es">Spanish</option>
 
-          </select>
-        </form>
-        <form onSubmit={event => this.onSendMessage(event)} >
-          <div className="container">
-            <input type="text" placeholder="Enter Text" name="chat" required />
-            <button className="sendbtn">
-              Send
+            </select>
+          </form>
+          <form onSubmit={event => this.onSendMessage(event)} >
+            <div className="container">
+              <input type="text" placeholder="Enter Text" name="chat" required />
+              <button className="sendbtn">
+                Send
             </button>
-            <Smile onClick={e => this.changeStatus(e)} />
-          </div>
-          {showEmojiPicker ? (
-            <Picker set="emojione" onSelect={this.addEmoji} />
-          ) : null}
+              <Smile onClick={e => this.changeStatus(e)} />
+            </div>
+            {showEmojiPicker ? (
+              <Picker set="emojione" onSelect={this.addEmoji} />
+            ) : null}
 
-        </form>
-
-        <ul>
-          {this.state.storedMessage.map((message) => <li >{message.userName} says: {message.chat}.</li>)}
-        </ul>
+          </form>
+        </div>
+        <div className="chat-box">
+          <ul>
+            {this.state.storedMessage.map((message) => {
+              if (message.userName === this.props.userName) {
+                return (<li className="chat-right">{message.userName} says: {message.chat}.</li>);
+              } else {
+                return (<li className="chat-left">{message.userName} says: {message.chat}.</li>);
+              }
+            }
+            )}
+          </ul>
+        </div>
       </Fragment>
     );
   }

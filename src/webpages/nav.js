@@ -1,8 +1,9 @@
 /* eslint-disable no-unused-expressions */
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import Earth from '../images/earth.png';
 import {Redirect} from 'react-router-dom';
+import Earth from '../images/earth.png';
+import '../css/navbarStyle.css';
 
 
 export default class Navigation extends Component {
@@ -12,22 +13,20 @@ export default class Navigation extends Component {
     this.props.props.history.push("/chat")
   };
   render() {
-    if (!this.props.isAuthenticated) {
+    if (!this.props.auth) {
       return (
         <Fragment>
-          <header>
+          <header className="navigation">
             <section>
-              <h1><a href="/">Found in Translation</a></h1>
-              <h2>{this.props.userName}</h2>
+              <h1><Link to="/">Found in Translation</Link></h1>
               <nav>
                 <ul>
-                  <li><Route to="/">Home</Route></li>
+                  <li><Link to="/">Home</Link></li>
                   <li><Link to="/login">Login</Link></li>
                   <li><Link to="/register">Register</Link></li>
                   <li><Link to="/aboutus">About Us</Link></li>
                 </ul>
               </nav>
-
             </section>
           </header>
         </Fragment>
@@ -35,21 +34,18 @@ export default class Navigation extends Component {
     } else {
       return (
         <Fragment>
-          <header>
+          <header className="navigation">
             <section>
-              <h1><a href="/">Found in Translation</a></h1>
-              <h2>{this.props.userName}</h2>
+              <h1><Link to="/">Found in Translation</Link></h1>
               <nav>
                 <ul>
-                  <li><Route to="/">Home</Route></li>
-                  <li><Link to="/login">Login</Link></li>
-                  <li><Link to="/register">Register</Link></li>
+                  <li>Hello {this.props.userName}!</li>
+                  <li><Link to="/">Home</Link></li>
+                  <li onClick={this.handleClick}>Chat</li>
                   <li><Link to="/aboutus">About Us</Link></li>
+                  <li onClick={this.props.logout}>Logout</li>
                 </ul>
               </nav>
-
-              <button  onClick={this.handleClick}>Start Chat</button>
-              <button onClick={this.props.logout}>Logout</button>
             </section>
           </header>
         </Fragment>

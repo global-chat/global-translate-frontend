@@ -20,6 +20,7 @@ export default class Register extends Component {
         const newUser = await Auth.signIn(userName, passWord);
         this.props.setUserName(newUser['username']);
         this.props.setUserToken(newUser['signInUserSession'].accessToken.jwtToken);
+        this.props.authenticateUser(true);
         this.props.history.push("/");
       } catch (e) {
         alert(e.message);
@@ -29,7 +30,7 @@ export default class Register extends Component {
   render() {
     return (
       <>
-      <Navigation></Navigation>
+      <Navigation auth={this.props.isAuthenticated} props={this.props} logout={this.props.logoutUser} userName={this.props.userName} userToken={this.props.userToken}></Navigation>
       <section id="register">
       <form onSubmit={event => this.onRegister(event)}>
       <div className="theform">
