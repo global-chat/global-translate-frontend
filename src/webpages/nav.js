@@ -65,9 +65,9 @@ export const NavComponent = (props) => (
     <nav>
       <ul>
           <li><a href="/">Home</a></li>
-          <li><a href="#">Login</a></li>
-          <li><a href="#">Register</a></li>
-          <li><a href="#">About Us</a></li>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/register">Register</a></li>
+          <li><a href="aboutus">About Us</a></li>
       </ul>
     </nav>
   </section>

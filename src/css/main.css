@@ -10,6 +10,7 @@
 
 @import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Arima+Madurai:100|Fredoka+One|Poiret+One');
 @import url('https://fonts.googleapis.com/css?family=Righteous');
+@import url('https://fonts.googleapis.com/css?family=Delius&display=swap');
 
 
 /*****************
@@ -178,4 +179,55 @@
           background: #00818a;
           box-shadow: 5px 5px 2px #f7be16;
           color: #293462;
+      }
+
+
+/*****************
+* Register Section 
+***/
+      #register .container{
+        display: grid;
+        background-color: #216583;
+        grid-template-columns: auto auto;
+        grid-gap: 10px;
+        padding: 10px;
+        border-radius: 15px;
+        width: 980px;
+        color: white;
+        font-family: 'Delius', cursive;
+      }
+      
+      #register form div{
+        /* text-align: center; */
+        padding: 10px 0;
+        font-size: 20px;
+      }
+      
+      #register h2{
+        grid-column: 1 /span 2;
+        text-align: center;
+      }
+      
+      #register p{
+        grid-column: 1 /span 2;
+        text-align: center;
+      }
+      /* .item1{
+        grid-column: 1 / span 1;
+        text-align: right;
+      }*/
+      #register .item2{
+        grid-column: 1 / span 2;
+        text-align: right;
+      }
+      
+      #register .item1, .item3, .item5, .item7, .item9, .item11, .item13{
+        grid-column: 1 / span 1;
+        text-align: right;
+      }
+      
+      #register button{
+        text-align: center;
+        width: 100px;
+        grid-column: 2 / span 1;
       }
