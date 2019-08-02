@@ -10,6 +10,9 @@ import Register from './webpages/register';
 import Login from './webpages/login';
 import AboutUs from './webpages/aboutus';
 
+//https://serverless-stack.com/chapters/setup-secure-pages.html
+//used this tutorial handle secured routing
+
 export default ({ childProps }) =>
   <Switch>
     <RoutePath path="/" exact component={Home} props={childProps} />

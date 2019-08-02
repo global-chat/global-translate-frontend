@@ -48,9 +48,16 @@ A frontend application using a backend Lambda Function and API Gateway
 
 [Xia liu](https://github.com/xialiu1988)
 
-[Vinh Nyguen](https://github.com/nguyenvinh2)
+[Vinh Ngyuen](https://github.com/nguyenvinh2)
 
 [Charles Clemens](https://github.com/CClemensJr)
 
 [Anthony Berry](https://github.com/Antberry)
 
+Reference:
+
+https://serverless-stack.com/chapters/create-a-cognito-identity-pool.html
+
+This tutorial was used to create Cognito account management as well as handle authentication routes in React.
+
+AWS 
