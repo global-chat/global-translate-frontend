@@ -18,7 +18,6 @@ export default class ChatWindow extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.userToken);
     ws = new Sockette(
       `wss://6u0sg2u4x6.execute-api.us-west-2.amazonaws.com/Test?username=${this.props.userName}&token=${this.props.userToken}`,
       {
@@ -50,7 +49,6 @@ export default class ChatWindow extends Component {
 
   onMessageReceived = async ({ data }) => {
     let message = JSON.parse(data);
-    console.log(message);
     if (!message.isEmoji) {
       const result = await fetch(`https://rop898gbik.execute-api.us-west-2.amazonaws.com/initial`, {
         mode: 'cors',
@@ -77,7 +75,6 @@ export default class ChatWindow extends Component {
   onSendMessage = async event => {
     let messageValue = event.target.chat.value;
     event.preventDefault();
-    console.log(event.target.chat);
     if (event.native != null) {
       ws.json({
         message: "sendMessage",
@@ -164,8 +161,6 @@ export default class ChatWindow extends Component {
       // [..]
       showEmojiPicker,
     } = this.state;
-    console.log("running");
-
     return (
       <Fragment>
         <form onChange={event => this.selectLanguage(event)}>
@@ -204,7 +199,7 @@ export default class ChatWindow extends Component {
         </form>
 
         <ul>
-          {this.state.storedMessage.map((message, i) => <li >{message.userName} says: {message.chat}.</li>)}
+          {this.state.storedMessage.map((message) => <li >{message.userName} says: {message.chat}.</li>)}
         </ul>
       </Fragment>
     );
