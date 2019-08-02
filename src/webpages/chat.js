@@ -141,7 +141,7 @@ export default class ChatWindow extends Component {
         const content = await result.json();
         let newM = {
           "chat": content.body.TranslatedText,
-          "userName": this.props.userName,
+          "userName": this.state.storedMessage[i].userName,
           "language": trlanguage,
           "isEmoji": false
         }
