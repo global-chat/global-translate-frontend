@@ -21,7 +21,7 @@ A frontend application using a backend Lambda Function and API Gateway
 [Deployed Website](https://d3txzunf41i72v.cloudfront.net/)
 <!-- Links to any other repos used in the application (where applicable) -->
 ## Links to Other Repos
-- N/A
+- [Global Chat](https://github.com/global-chat/)
 <!-- A list of technologies used in the application -->
 ## Technologies Used
 
