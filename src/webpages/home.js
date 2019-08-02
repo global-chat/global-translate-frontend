@@ -13,13 +13,16 @@ export default class Home extends Component {
         <Layout>
           {/* <Navigation props={this.props} logout={this.props.logoutUser} userName={this.props.userName} userToken={this.props.userToken}></Navigation> */}
         
-          {/* <main role="main" className="inner cover ">
-              <h1 className="cover-heading">Cover your page.</h1>
-              <p className="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
-              <p className="lead">
-                <a href="#" className="btn btn-lg btn-secondary">Learn more</a>
-              </p>
-          </main>  */}
+          <main>
+            <section id="home">
+                <h1>Don't get lost in translation...</h1>
+                <h2>Allow Found in Translation to bridge the gap in real time!</h2>
+
+                <section>
+                        <a href="/register">Sign up now!</a>
+                </section>
+            </section>
+          </main>
         </Layout>
       </Fragment>
     );
