@@ -5,7 +5,7 @@ import Card from './components/card';
 import Row from 'react-bootstrap/Row';
 // import './css/home.css';
 // import './css/cover.css';
-import './scss/core.scss';
+// import './scss/core.scss';
 
 
 export const Home = () => (
