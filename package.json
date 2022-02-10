@@ -12,7 +12,7 @@
     "css": "^2.2.4",
     "dotenv": "^8.0.0",
     "emoji-mart": "^2.11.1",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.10",
     "react-chat-window": "^1.2.1",
